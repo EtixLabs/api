@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
@@ -42,6 +43,7 @@ func NewWebService() *martini.Martini {
 	r := newRouter()
 	m.MapTo(r, (*martini.Routes)(nil))
 	m.Action(r.Handle)
+	m.RunOnAddr(":" + os.Getenv("PORT"))
 	return m
 }
 

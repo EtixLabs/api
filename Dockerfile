@@ -1,11 +1,7 @@
-FROM golang:1.5.1
-MAINTAINER Ludovic Post <ludovic.post@epitech.eu>
+FROM scratch
+MAINTAINER Julien Bordellier <julien.bordellier@etixgroup.com>
 
+COPY pepersalt-api pepersalt-api
+ENV PORT 3000
 EXPOSE 3000
-
-COPY . src/github.com/PepperSalt42/api
-
-RUN go get github.com/PepperSalt42/api
-RUN go install github.com/PepperSalt42/api
-
-CMD ["api"]
+ENTRYPOINT ["/pepersalt-api"]
